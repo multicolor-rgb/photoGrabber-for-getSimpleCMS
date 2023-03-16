@@ -151,6 +151,10 @@ if (isset($_POST['submit'])) {
 
     $curl = curl_init();
 
+    if ($_SERVER['HTTP_HOST'] == 'localhost') {
+     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    }
+
     curl_setopt($curl, CURLOPT_URL, $url);
 
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
